@@ -1,0 +1,23 @@
+{
+  "name": "image-server",
+  "version": "0.0.0",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "husky"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stehefan/image-server.git"
+  },
+  "author": "Stefan Lier",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stehefan/image-server/issues"
+  },
+  "homepage": "https://github.com/stehefan/image-server#readme",
+  "description": "",
+  "devDependencies": {
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0"
+  }
+}
