@@ -1,25 +1,20 @@
-use actix_web::http::header::ContentType;
-use actix_web::{get, App, HttpResponse, HttpServer, Responder};
-use serde::Serialize;
+use serde_json::json;
+use vercel_runtime::{run, Body, Error, Request, Response, StatusCode};
 
-#[derive(Serialize)]
-struct Response {
-    status: String
+#[tokio::main]
+async fn main() -> Result<(), Error> {
+    run(handler).await
 }
 
-#[get("/")]
-async fn hello() -> impl Responder {
-    let response = Response { status: "OK".into() };
-
-    HttpResponse::Ok()
-        .content_type(ContentType::json())
-        .body(serde_json::to_string(&response).unwrap())
-}
-
-#[actix_web::main]
-async fn main() -> std::io::Result<()> {
-    HttpServer::new(|| App::new().service(hello))
-        .bind(("127.0.0.1", 8080))?
-        .run()
-        .await
+pub async fn handler(_req: Request) -> Result<Response<Body>, Error> {
+    Ok(Response::builder()
+        .status(StatusCode::OK)
+        .header("Content-Type", "application/json")
+        .body(
+            json!({
+              "message": "There might be an image at some point",
+            })
+                .to_string()
+                .into(),
+        )?)
 }
