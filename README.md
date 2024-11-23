@@ -7,6 +7,16 @@ _Mostly a reason to learn and code some Rust_
 
 ## Development
 ### Prerequisites
+#### Vercel CLI
+To run the dev-environment properly, we need to install the Vercel CLI. Please read the instructions in their 
+[docs](https://vercel.com/docs/cli) for further instructions on how to install it, but as of writing this, it should
+be as easy as:
+
+```bash
+# Example for using npm - adopt to your package manager of choice
+npm i -g vercel@latest 
+```
+
 #### Rust
 
 This is a Rust-application, therefore Rust needs to be installed on your system to build and run this. See
@@ -30,13 +40,14 @@ using npm.
 
 ### Development
 
-To run the development server, use the following command:
+To run the development server, we have to rely on the vercel cli, as it spins up everything we need for running this 
+function as close to the vercel environment as possible. Use the following command:
 
 ```bash
-cargo run
+vercel dev
 ```
 
-Open [http://localhost:8080](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000/api/index](http://localhost:3000) with your browser to see the result of one of the handlers.
 
 ## Deployment
 Right now, this project is deployed to Vercel automatically via a hook in vercel which runs the `build` command whenever
